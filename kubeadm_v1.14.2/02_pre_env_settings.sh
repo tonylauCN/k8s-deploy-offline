@@ -6,16 +6,16 @@
 echo "###############################################"
 echo "### 02:1 Environment Settings"
 
-
 #export master_ips=${master_ips:-192.168.56.100}
 #export master_hostnames=${master_hostnames:-"k8s-master"}
 #export node_ips=${node_ips:-192.168.56.101,192.168.56.102}
 #export node_hostnames=${node_hostnames:-"k8s-node1,k8s-node2"}
 
-   for i in ../*.env; do
+   for i in $k8s_root/*.env; do
         if [ -f "$i" ]; then
-            #. "$i"
-            source "$i"
+            . "$i"
+            echo "using evn $i"
+            #source "$i"
         fi
    done
 

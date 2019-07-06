@@ -29,7 +29,7 @@ systemctl start docker.service
 
 ## Set Docker daemon.json file
 mkdir -p /etc/docker
-../common/file_back.sh /etc/docker/daemon.json /etc/docker/daemon.json.bak
+$k8s_root/common/file_back.sh /etc/docker/daemon.json /etc/docker/daemon.json.bak
 
 cat > /etc/docker/daemon.json << EOF
 {

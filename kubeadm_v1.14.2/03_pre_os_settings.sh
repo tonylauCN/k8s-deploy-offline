@@ -27,7 +27,8 @@ echo "### 03:2 Disable SELinux"
 # Set SELinux in permissive mode (effectively disabling it)
 setenforce 0
 # Back file
-../common/file_back.sh /etc/selinux/config /etc/selinux/config.bak
+$k8s_root/common/file_back.sh /etc/selinux/config /etc/selinux/config.bak
+
 #cp -p /etc/selinux/config /etc/selinux/config.bak
 #sed -i -e 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
@@ -37,7 +38,7 @@ echo "###############################################"
 echo "### 03:3 Turn off Swap"
 swapoff -a
 
-../common/file_back.sh /etc/fstab /etc/fstab.bak
+$k8s_root/common/file_back.sh /etc/fstab /etc/fstab.bak
 
 cp -p /etc/fstab /etc/fstab.bak
 sed -i "s/\/dev\/mapper\/rhel-swap/\#\/dev\/mapper\/rhel-swap/g" /etc/fstab
